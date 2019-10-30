@@ -16,34 +16,18 @@ function probarValidarNombre() {
 
 function pruebaValidarCiudad() {
     console.assert(
-        validarCiudad("") === "Por favor seleccione la ciudad", 
+        validarCiudad("") === "Por favor seleccione la ciudad",
         "validarCiudad no validó que la ciudad no sea vacía",
-        );
+    );
     console.assert(
         validarCiudad("Salta") === "", "validarCiudad() no validó ciudad válida"
-    )    
+    );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function probarValidarDescripcionRegalo(){
+function probarValidarDescripcionRegalo() {
     console.assert(validarDescripcionRegalo("1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
-    === "La descripción del regalo debe contener a lo sumo 300 caracteres", 
-    "validarDescripcionRegalo validó descripción demasiado larga"
+        === "La descripción del regalo debe contener a lo sumo 300 caracteres",
+        "validarDescripcionRegalo validó descripción demasiado larga"
     );
     console.assert(validarDescripcionRegalo("") === "No hay descripción del regalo", "validarDescripcionRegalo() validó una descripción vacía"
     );

@@ -10,7 +10,7 @@ function validarNombre(nombre) {
     if (nombre.length === 0) {
         return "El nombre debe tener al menos 1 caracter";
     }
-     if (nombre.length > 50) {
+    if (nombre.length > 50) {
         return "El nombre debe tener a lo sumo 50 caracteres";
 
     }
@@ -18,32 +18,36 @@ function validarNombre(nombre) {
     return "";
 }
 
-function validarCiudad(ciudad){
-    if(ciudad.length === 0){
-    return "Por favor seleccione la ciudad"}
+function validarCiudad(ciudad) {
+    if (ciudad.length === 0) {
+        return "Por favor seleccione la ciudad"
+    }
 
     return ""
 
 }
 
-function validarDescripcionRegalo(descripcionRegalo){
-    
-    if(descripcionRegalo.length === 0){
+function validarDescripcionRegalo(descripcionRegalo) {
+
+    if (descripcionRegalo.length === 0) {
         return "No hay descripción del regalo"
     }
-    if(descripcionRegalo.length > 300){
+    if (descripcionRegalo.length > 300) {
         return "La descripción del regalo debe contener a lo sumo 300 caracteres"
     }
     return ""
 }
 
-function validarFormulario(){
-
+function validarFormulario(nombre, ciudad, descripcionRegalo){
+    
+    validarNombre(nombre),
+    validarCiudad(ciudad);
+    validarDescripcionRegalo(descripcionRegalo);
 }
 
-const 
+const
 
 const botonFormulario = document.querySelector("#enviar-carta");
 
 botonFormulario.onclick = validarFormulario()
-    
+
