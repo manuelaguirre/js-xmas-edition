@@ -26,8 +26,15 @@ function validarCiudad(ciudad){
 
 }
 
-function validarDescripcionRegalo(){
-
+function validarDescripcionRegalo(descripcionRegalo){
+    
+    if(descripcionRegalo.length === 0){
+        return "No hay descripción del regalo"
+    }
+    if(descripcionRegalo.length > 300){
+        return "La descripción del regalo debe contener a lo sumo 300 caracteres"
+    }
+    return ""
 }
 
 function validarFormulario(){
