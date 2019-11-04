@@ -1,10 +1,3 @@
-const $form = document.querySelector("#carta-a-santa")
-
-const nombre = $form.nombre.value;
-const ciudad = $form.ciudad.value;
-const descripcionRegalo = $form["descripcion-regalo"].value;
-
-
 
 function validarNombre(nombre) {
     if (nombre.length === 0) {
@@ -44,7 +37,13 @@ function validarDescripcionRegalo(descripcionRegalo) {
     return ""
 }
 
-function validarFormulario(nombre, ciudad, descripcionRegalo){
+function validarFormulario(event){
+    const $form = document.querySelector("#carta-a-santa")
+    const nombre = $form.nombre.value;
+    const ciudad = $form.ciudad.value;
+    const descripcionRegalo = $form["descripcion-regalo"].value;
+
+
     
     validarNombre(nombre),
     validarCiudad(ciudad);
