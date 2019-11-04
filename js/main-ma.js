@@ -1,4 +1,4 @@
-const $form = document.querySelector("carta-a-santa")
+const $form = document.querySelector("#carta-a-santa")
 
 const nombre = $form.nombre.value;
 const ciudad = $form.ciudad.value;
@@ -13,6 +13,9 @@ function validarNombre(nombre) {
     if (nombre.length > 50) {
         return "El nombre debe tener a lo sumo 50 caracteres";
 
+    }
+    if(!/^[a-z ]+$/i.test(nombre)){
+        return "El nombre solo debe contener letras"
     }
 
     return "";
@@ -32,8 +35,11 @@ function validarDescripcionRegalo(descripcionRegalo) {
     if (descripcionRegalo.length === 0) {
         return "No hay descripción del regalo"
     }
-    if (descripcionRegalo.length > 300) {
-        return "La descripción del regalo debe contener a lo sumo 300 caracteres"
+    if (descripcionRegalo.length >= 100) {
+        return "La descripción del regalo debe contener a lo sumo 100 caracteres"
+    }
+    if (!/^[a-z0-9 ]+$/i.test(descripcionRegalo)){
+        return "La descripción del regalo solo puede contener números y letras"
     }
     return ""
 }
@@ -45,9 +51,7 @@ function validarFormulario(nombre, ciudad, descripcionRegalo){
     validarDescripcionRegalo(descripcionRegalo);
 }
 
-const
-
 const botonFormulario = document.querySelector("#enviar-carta");
 
-botonFormulario.onclick = validarFormulario()
+botonFormulario.onclick = validarFormulario(nombre, ciudad, descripcionRegalo)
 
