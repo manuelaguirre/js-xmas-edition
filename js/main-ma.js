@@ -7,7 +7,7 @@ function validarNombre(nombre) {
         return "El nombre debe tener a lo sumo 50 caracteres";
 
     }
-    if(!/^[a-z ]+$/i.test(nombre)){
+    if (!/^[a-z ]+$/i.test(nombre)) {
         return "El nombre solo debe contener letras"
     }
 
@@ -31,23 +31,22 @@ function validarDescripcionRegalo(descripcionRegalo) {
     if (descripcionRegalo.length >= 100) {
         return "La descripción del regalo debe contener a lo sumo 100 caracteres"
     }
-    if (!/^[a-z0-9 ]+$/i.test(descripcionRegalo)){
+    if (!/^[a-z0-9 ]+$/i.test(descripcionRegalo)) {
         return "La descripción del regalo solo puede contener números y letras"
     }
     return ""
 }
 
-function validarFormulario(event){
+function validarFormulario(event) {
+
     const $form = document.querySelector("#carta-a-santa")
     const nombre = $form.nombre.value;
     const ciudad = $form.ciudad.value;
     const descripcionRegalo = $form["descripcion-regalo"].value;
 
-
-    
-    validarNombre(nombre),
-    validarCiudad(ciudad);
-    validarDescripcionRegalo(descripcionRegalo);
+    const errorNombre = validarNombre(nombre);
+    const errorCiudad = validarCiudad(ciudad);
+    const errorDescripcionRegalo = validarDescripcionRegalo(descripcionRegalo);
 }
 
 const botonFormulario = document.querySelector("#enviar-carta");
