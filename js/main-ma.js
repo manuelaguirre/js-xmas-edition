@@ -57,13 +57,19 @@ function validarFormulario(event) {
 
     }
     let esExito = manejarErrores(errores) === 0;
+    
     if (esExito) {
         const cartelExito = document.querySelector("#exito");
         cartelExito.className = "";
         $form.className = "oculto";
+        setTimeout(redireccionarAWishlist, 5000);
     }
     event.preventDefault();
 
+}
+
+function redireccionarAWishlist(){
+    window.location.href = "/home/manuel/Bureau/trucs/js-xmas-edition/wishlist.html"
 }
 
 function manejarErrores(errores) {
@@ -77,7 +83,7 @@ function manejarErrores(errores) {
 
         if (error) {
             contadorErrores++;
-            if ($form[key].className != "error") {
+            if ($form[key].className != "error") {    //si no era un error hasta ahora...
                 $form[key].className = "error";
 
                 const $error = document.createElement("li");
