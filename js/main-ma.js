@@ -53,18 +53,30 @@ function validarFormulario(event) {
     const errores = {
         nombre: errorNombre,
         ciudad: errorCiudad,
-        descripcionRegalo: errorDescripcionRegalo
+        'descripcion-regalo': errorDescripcionRegalo
 
     }
     manejarErrores(errores);
 
     event.preventDefault();
-    
 
 }
 
 function manejarErrores(errores) {
-    errorNombre = errores.nombre;
+
+    const keys = Object.keys(errores);
+
+    keys.forEach(function(key){
+        const error = errores[key];
+        if(error){
+            $form[key].className = "error";
+        }else{
+            $form[key].className = "";
+        }
+    })
+
+
+   /* errorNombre = errores.nombre;
     errorCiudad = errores.ciudad;
     errorDescripcionRegalo = errores.descripcionRegalo
 
@@ -91,11 +103,10 @@ function manejarErrores(errores) {
         $form["descripcion-regalo"].className = ""
 
     }
-
+*/
 
 }
 
 const botonFormulario = document.querySelector("#enviar-carta");
-
-botonFormulario.onclick = validarFormulario
+$form.onsubmit = validarFormulario
 
