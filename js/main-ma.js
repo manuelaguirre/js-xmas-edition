@@ -65,17 +65,30 @@ function validarFormulario(event) {
 function manejarErrores(errores) {
 
     const keys = Object.keys(errores);
+    const $errores = document.querySelector("#errores");
 
     keys.forEach(function(key){
         const error = errores[key];
-        if(error){
+        
+        if(error && ($form[key].className != "error")){
             $form[key].className = "error";
-        }else{
+
+            const $error = document.createElement("li");
+            $error.id = `error-${key}`
+            $error.innerText = error
+            $errores.appendChild($error);
+
+        }else if(!error) {
+            const errorABorrar = document.querySelector(`#error-${key}`);
+            if(errorABorrar){
+                errorABorrar.remove()
+            }
             $form[key].className = "";
+            
         }
     })
 
-
+    
    /* errorNombre = errores.nombre;
     errorCiudad = errores.ciudad;
     errorDescripcionRegalo = errores.descripcionRegalo
