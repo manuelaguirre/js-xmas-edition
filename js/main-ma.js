@@ -57,7 +57,7 @@ function validarFormulario(event) {
 
     }
     let esExito = manejarErrores(errores) === 0;
-    
+
     if (esExito) {
         const cartelExito = document.querySelector("#exito");
         cartelExito.className = "";
@@ -68,7 +68,7 @@ function validarFormulario(event) {
 
 }
 
-function redireccionarAWishlist(){
+function redireccionarAWishlist() {
     window.location.href = "/home/manuel/Bureau/trucs/js-xmas-edition/wishlist.html"
 }
 
@@ -90,6 +90,12 @@ function manejarErrores(errores) {
                 $error.id = `error-${key}`
                 $error.innerText = error
                 $errores.appendChild($error);
+            } else {
+                const errorACambiar = document.querySelector(`#error-${key}`);
+                if (errorACambiar !== error) {
+                    errorACambiar.innerText = error;
+                }
+
             }
         } else if (!error) {
 
