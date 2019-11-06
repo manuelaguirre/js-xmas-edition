@@ -56,67 +56,76 @@ function validarFormulario(event) {
         'descripcion-regalo': errorDescripcionRegalo
 
     }
-    manejarErrores(errores);
-
+    let esExito = manejarErrores(errores) === 0;
+    if (esExito) {
+        const cartelExito = document.querySelector("#exito");
+        cartelExito.className = "";
+        $form.className = "oculto";
+    }
     event.preventDefault();
 
 }
 
 function manejarErrores(errores) {
 
+    let contadorErrores = 0
     const keys = Object.keys(errores);
     const $errores = document.querySelector("#errores");
 
-    keys.forEach(function(key){
+    keys.forEach(function (key) {
         const error = errores[key];
-        
-        if(error && ($form[key].className != "error")){
-            $form[key].className = "error";
 
-            const $error = document.createElement("li");
-            $error.id = `error-${key}`
-            $error.innerText = error
-            $errores.appendChild($error);
+        if (error) {
+            contadorErrores++;
+            if ($form[key].className != "error") {
+                $form[key].className = "error";
 
-        }else if(!error) {
+                const $error = document.createElement("li");
+                $error.id = `error-${key}`
+                $error.innerText = error
+                $errores.appendChild($error);
+            }
+        } else if (!error) {
+
             const errorABorrar = document.querySelector(`#error-${key}`);
-            if(errorABorrar){
+            if (errorABorrar) {
                 errorABorrar.remove()
             }
             $form[key].className = "";
-            
+
         }
     })
 
-    
-   /* errorNombre = errores.nombre;
-    errorCiudad = errores.ciudad;
-    errorDescripcionRegalo = errores.descripcionRegalo
 
-    if (errorNombre) {
-        $form.nombre.className = "error"
-    } else {
-
-        $form.nombre.className = ""
-    }
-
-
-
-    if (errorCiudad) {
-        $form.ciudad.className = "error"
-    } else {
-        $form.ciudad.className = ""
-    }
-
-
-
-    if (errorDescripcionRegalo) {
-        $form["descripcion-regalo"].className = "error"
-    } else {
-        $form["descripcion-regalo"].className = ""
-
-    }
-*/
+    /* errorNombre = errores.nombre;
+     errorCiudad = errores.ciudad;
+     errorDescripcionRegalo = errores.descripcionRegalo
+ 
+     if (errorNombre) {
+         $form.nombre.className = "error"
+     } else {
+ 
+         $form.nombre.className = ""
+     }
+ 
+ 
+ 
+     if (errorCiudad) {
+         $form.ciudad.className = "error"
+     } else {
+         $form.ciudad.className = ""
+     }
+ 
+ 
+ 
+     if (errorDescripcionRegalo) {
+         $form["descripcion-regalo"].className = "error"
+     } else {
+         $form["descripcion-regalo"].className = ""
+ 
+     }
+ */
+    return contadorErrores;
 
 }
 
